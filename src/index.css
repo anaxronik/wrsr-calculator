@@ -1,0 +1,70 @@
+@import 'tailwindcss';
+
+@theme {
+  /* W&RSR paper design system (sampled from in-game Economy & Trade screen) */
+  --color-paper: #ece4da; /* base paper */
+  --color-paper-raised: #f2ece2; /* lighter panel */
+  --color-paper-dark: #ded0bc; /* pressed button / input */
+  --color-ink: #3f342c; /* main text, dark brown */
+  --color-ink-soft: #6b5d4f; /* secondary text */
+  --color-accent: #8a413a; /* reddish-brown title bar / headers */
+  --color-accent-soft: #9b3e2e; /* header text */
+  --color-line: #c9b99f; /* separators */
+  --color-input-bg: #f8ebc9; /* creamy yellow game input field */
+  --color-input-border: #55524a; /* dark gray game input border */
+}
+
+/*
+ * Aged paper background: warm base + diffuse stains (radial gradients)
+ * + fine fiber grain (SVG feTurbulence), all GPU-cheap, no image files.
+ */
+.paper-bg {
+  background-color: var(--color-paper);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"),
+    radial-gradient(
+      ellipse 640px 420px at 12% 18%,
+      rgba(198, 168, 124, 0.18),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 520px 680px at 88% 62%,
+      rgba(190, 155, 110, 0.14),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 820px 500px at 72% 8%,
+      rgba(205, 180, 140, 0.1),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 460px 340px at 26% 86%,
+      rgba(170, 138, 100, 0.13),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 900px 240px at 50% 100%,
+      rgba(150, 120, 88, 0.1),
+      transparent 75%
+    ),
+    radial-gradient(
+      ellipse 140% 120% at 50% 45%,
+      transparent 55%,
+      rgba(120, 95, 70, 0.09) 100%
+    );
+  background-attachment: fixed;
+}
+
+/* Shadow that follows the torn (clip-path) edge of PaperCard. */
+.torn-shadow {
+  filter:
+    drop-shadow(1px 2px 2px rgba(74, 59, 51, 0.25))
+    drop-shadow(3px 6px 10px rgba(74, 59, 51, 0.22));
+  transition: filter 0.2s ease;
+}
+
+.torn-shadow:hover {
+  filter:
+    drop-shadow(2px 3px 3px rgba(74, 59, 51, 0.3))
+    drop-shadow(5px 10px 16px rgba(74, 59, 51, 0.3));
+}
