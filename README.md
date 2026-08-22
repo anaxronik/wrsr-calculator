@@ -1,34 +1,33 @@
-# React + TypeScript + Vite
+# W&RSR Калькулятор
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Калькуляторы и справочники для игры [Workers & Resources: Soviet Republic](https://store.steampowered.com/app/784150/Workers__Resources_Soviet_Republic_).
 
-Currently, two official plugins are available:
+**Готовый сайт: https://anaxronik.github.io/wrsr-calculator/**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Возможности
 
-## React Compiler
+- **Цены на ресурсы** — таблица цен мирового рынка (54 позиции, данные из игрового окна «Экономика и торговля»): продажа/покупка в рублях и долларах. Все цены редактируемые, изменения сохраняются в браузере (localStorage).
+- **Калькулятор прибыли** *(в разработке)* — рентабельность производственных цепочек.
+- **Справочник зданий** *(в разработке)*.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Технологии
 
-Note: This will impact Vite dev & build performances.
+- [Vite](https://vite.dev/) + [React 19](https://react.dev/) (React Compiler) + TypeScript
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [zustand](https://zustand.docs.pmnd.rs/) для стейта
+- Oxlint для линтинга
 
-## Expanding the Oxlint configuration
+Дизайн повторяет внутриигровые окна: состаренная бумага, красно-коричневые заголовки, оригинальные иконки ресурсов.
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+## Разработка
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Сборка: `npm run build`, линт: `npm run lint`.
+
+## Деплой
+
+При каждом пуше в `main` GitHub Actions собирает проект и публикует на GitHub Pages.
