@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/WRSR-calculator/',
+  base: '/wrsr-calculator/',
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] }),
